@@ -71,6 +71,15 @@ public class MainActivity extends AppCompatActivity {
                 // Insert a task
                 db.insertSong(t, s, date, num);
 
+                etSingers.setText("");
+                etTitle.setText("");
+                etYear.setText("");
+                rb1.setChecked(false);
+                rb2.setChecked(false);
+                rb3.setChecked(false);
+                rb4.setChecked(false);
+                rb5.setChecked(false);
+
             }
         });
 
