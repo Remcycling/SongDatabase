@@ -4,16 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     Button btnInsert, btnShow;
@@ -21,7 +16,6 @@ public class MainActivity extends AppCompatActivity {
     RadioGroup star;
     RadioButton rb1, rb2, rb3, rb4, rb5;
 
-    TextView test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnInsert = findViewById(R.id.btnInsert);
         btnShow = findViewById(R.id.btnShow);
-        etTitle = findViewById(R.id.editTextTitle);
+        etTitle = findViewById(R.id.editTextId);
         etSingers = findViewById(R.id.editTextSingers);
         etYear = findViewById(R.id.editTextYear);
         star = findViewById(R.id.ratings);
@@ -40,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         rb4 = findViewById(R.id.radioButton4);
         rb5 = findViewById(R.id.radioButton5);
 
-        test = findViewById(R.id.textView4);
+
 
         btnInsert.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -90,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
                 // activity's Context
 
                 Intent intent = new Intent(MainActivity.this, RecordActitvity1.class);
-                intent.putExtra("playlist",RecordActitvity1.class);
                 startActivity(intent);
 
 

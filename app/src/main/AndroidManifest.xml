@@ -13,6 +13,9 @@
         android:theme="@style/Theme.SongDatabase"
         tools:targetApi="31">
         <activity
+            android:name=".RecordActivity2"
+            android:exported="false" />
+        <activity
             android:name=".RecordActitvity1"
             android:exported="false" />
         <activity
