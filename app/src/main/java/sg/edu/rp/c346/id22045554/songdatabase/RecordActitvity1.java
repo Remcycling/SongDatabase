@@ -3,6 +3,7 @@ package sg.edu.rp.c346.id22045554.songdatabase;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,7 +20,7 @@ public class RecordActitvity1 extends AppCompatActivity {
     ArrayList<Song> alSongs;
     ArrayList<Song> alFive;
     Button btn5;
-    Song data1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,6 @@ public class RecordActitvity1 extends AppCompatActivity {
         btn5 = findViewById(R.id.btnPopular);
 
         Intent i = getIntent();
-        data1 = (Song) i.getSerializableExtra("data");
 
 
 
@@ -83,19 +83,7 @@ public class RecordActitvity1 extends AppCompatActivity {
         });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
+
+
 }
