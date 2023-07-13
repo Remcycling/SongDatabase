@@ -85,15 +85,6 @@ public class RecordActitvity1 extends AppCompatActivity {
 
 
 
-//        alSongs.clear();
-//        for (int i = 0; i < localArrayList.size(); i++) {
-//            Log.d("Database Content", i +". "+ localArrayList.get(i));
-//            alSongs.add(localArrayList.get(i));
-//
-//        }
-//        aaSongs.notifyDataSetChanged();
-
-
 
 
 
