@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textviewTitle"
+        android:id="@+id/Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Song title" />
@@ -22,7 +22,7 @@
         android:inputType="text" />
 
     <TextView
-        android:id="@+id/textViewSingers"
+        android:id="@+id/Singers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Singers" />
@@ -36,7 +36,7 @@
         android:inputType="text" />
 
     <TextView
-        android:id="@+id/textViewYear"
+        android:id="@+id/Year"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Year" />
@@ -50,7 +50,7 @@
         android:inputType="text" />
 
     <TextView
-        android:id="@+id/TextViewStars"
+        android:id="@+id/Stars"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Stars" />

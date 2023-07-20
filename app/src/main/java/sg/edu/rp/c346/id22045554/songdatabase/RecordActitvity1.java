@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
 
@@ -19,6 +20,7 @@ public class RecordActitvity1 extends AppCompatActivity {
     ListView lvSongs;
     ArrayList<Song> alSongs;
     ArrayList<Song> alFive;
+    CustomAdapter adapter;
     Button btn5;
 
 
@@ -30,11 +32,8 @@ public class RecordActitvity1 extends AppCompatActivity {
         lvSongs = findViewById(R.id.lvSonglist);
         btn5 = findViewById(R.id.btnPopular);
 
+
         Intent i = getIntent();
-
-
-
-
         Intent intentReceived = getIntent();
 
 
@@ -43,8 +42,9 @@ public class RecordActitvity1 extends AppCompatActivity {
 
 
         alSongs = db.getSongs();
-        ArrayAdapter aaSongs = new ArrayAdapter<>(RecordActitvity1.this, android.R.layout.simple_list_item_1,alSongs);
-        lvSongs.setAdapter(aaSongs);
+
+        adapter = new CustomAdapter(this, R.layout.row, alSongs);
+        lvSongs.setAdapter(adapter);
 
 
 
@@ -62,8 +62,10 @@ public class RecordActitvity1 extends AppCompatActivity {
 
 
                 alFive = db.get5songs();
-                ArrayAdapter aaFive = new ArrayAdapter<>(RecordActitvity1.this, android.R.layout.simple_list_item_1,alFive);
-                lvSongs.setAdapter(aaFive);
+                adapter = new CustomAdapter(RecordActitvity1.this, R.layout.row, alFive);
+                lvSongs.setAdapter(adapter);
+
+
 
                 db.close();
 

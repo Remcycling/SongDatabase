@@ -21,11 +21,6 @@ public class Song implements Serializable {
         this.stars = stars;
     }
 
-    public void fivesong(int id, int stars){
-        this.id = id;
-        this.stars = stars;
-    }
-
     public int getId() { return id; }
 
     public String getTitle() { return title; }

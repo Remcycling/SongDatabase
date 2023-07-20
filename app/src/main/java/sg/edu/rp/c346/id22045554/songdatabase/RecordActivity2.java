@@ -38,7 +38,6 @@ public class RecordActivity2 extends AppCompatActivity {
         rb4 = findViewById(R.id.rb4);
         rb5 = findViewById(R.id.rb5);
 
-        //DBHelper dbh = new DBHelper(RecordActivity2.this);
 
         Intent i = getIntent();
         data = (Song) i.getSerializableExtra("data");

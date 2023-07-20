@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     Button btnInsert, btnShow;
@@ -73,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 rb3.setChecked(false);
                 rb4.setChecked(false);
                 rb5.setChecked(false);
+                Toast.makeText(MainActivity.this, "Song added!", Toast.LENGTH_LONG).show();
 
             }
         });
