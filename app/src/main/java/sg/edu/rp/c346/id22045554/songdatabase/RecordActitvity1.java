@@ -33,8 +33,8 @@ public class RecordActitvity1 extends AppCompatActivity {
         btn5 = findViewById(R.id.btnPopular);
 
 
-        Intent i = getIntent();
-        Intent intentReceived = getIntent();
+        /*Intent i = getIntent();
+        Intent intentReceived = getIntent();*/
 
 
 
