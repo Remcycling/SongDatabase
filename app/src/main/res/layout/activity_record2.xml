@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
     android:orientation="vertical"
     tools:context=".RecordActivity2">
 
@@ -13,12 +14,11 @@
         android:layout_height="wrap_content"
         android:text="Song ID:" />
 
-    <EditText
-        android:id="@+id/editTextId"
+    <TextView
+        android:id="@+id/textViewId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text" />
+        android:text="TextView" />
 
     <TextView
         android:id="@+id/textView"
@@ -67,35 +67,36 @@
     <RadioGroup
         android:id="@+id/ratings2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <RadioButton
             android:id="@+id/rb1"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1" />
 
         <RadioButton
             android:id="@+id/rb2"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2" />
 
         <RadioButton
             android:id="@+id/rb3"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="3" />
 
         <RadioButton
             android:id="@+id/rb4"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="4" />
 
         <RadioButton
             android:id="@+id/rb5"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="5" />
     </RadioGroup>
@@ -110,19 +111,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Update" />
+            android:text="@string/update" />
 
         <Button
             android:id="@+id/btnDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Delete" />
+            android:text="@string/delete" />
     </LinearLayout>
 
     <Button
         android:id="@+id/btnCancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cancel" />
+        android:text="@string/cancel" />
 </LinearLayout>

@@ -16,7 +16,7 @@ public class DBHelper extends SQLiteOpenHelper {
     // Filename of the database
     private static final String DATABASE_NAME = "songs.db";
 
-    private static final String TABLE_TASK = "song";
+    private static final String TABLE_SONG = "song";
     private static final String COLUMN_ID = "_id";
     private static final String COLUMN_TITLE = "title";
     private static final String COLUMN_SINGERS = "singers";
@@ -33,7 +33,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTableSql = "CREATE TABLE " + TABLE_TASK +  "("
+        String createTableSql = "CREATE TABLE " + TABLE_SONG +  "("
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_TITLE + " TEXT,"
                 + COLUMN_SINGERS + " TEXT, "
@@ -46,7 +46,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("ALTER TABLE " + TABLE_TASK + " ADD COLUMN  lyrics TEXT ");
+        db.execSQL("ALTER TABLE " + TABLE_SONG + " ADD COLUMN  lyrics TEXT ");
 
     }
 
@@ -62,16 +62,16 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(COLUMN_STARS, stars);
 
         // Insert the row into the TABLE_TASK
-        db.insert(TABLE_TASK, null, values);
+        db.insert(TABLE_SONG, null, values);
         // Close the database connection
         db.close();
     }
 
     public ArrayList<Song> getSongs() {
-        ArrayList<Song> tasks = new ArrayList<Song>();
+        ArrayList<Song> songs = new ArrayList<Song>();
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns = {COLUMN_ID, COLUMN_TITLE, COLUMN_SINGERS, COLUMN_YEAR, COLUMN_STARS};
-        Cursor cursor = db.query(TABLE_TASK, columns, null, null, null, null, null, null);
+        Cursor cursor = db.query(TABLE_SONG, columns, null, null, null, null, null, null);
 
         if (cursor.moveToFirst()) {
             do {
@@ -81,14 +81,13 @@ public class DBHelper extends SQLiteOpenHelper {
                 int year = cursor.getInt(3);
                 int stars = cursor.getInt(4);
                 Song obj = new Song(id, title, singers, year, stars);
-                tasks.add(obj);
+                songs.add(obj);
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
-        return tasks;
+        return songs;
     }
-
 
     public int updateSong(Song data){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -101,7 +100,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         String condition = COLUMN_ID + "= ?" ;
         String[] args = {String.valueOf(data.getId())};
-        int result = db.update(TABLE_TASK, values, condition, args);
+        int result = db.update(TABLE_SONG, values, condition, args);
         db.close();
         return result;
     }
@@ -110,20 +109,20 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         String condition = COLUMN_ID + "= ?";
         String[] args = {String.valueOf(id)};
-        int result = db.delete(TABLE_TASK, condition, args);
+        int result = db.delete(TABLE_SONG, condition, args);
         db.close();
         return result;
     }
 
 
     public ArrayList<Song> get5songs() {
-        ArrayList<Song> tasks = new ArrayList<Song>();
+        ArrayList<Song> songs = new ArrayList<Song>();
 
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns= {COLUMN_ID, COLUMN_TITLE, COLUMN_SINGERS, COLUMN_YEAR, COLUMN_STARS};
         String condition = COLUMN_STARS + " = ?";
         String[] args = {"5"};
-        Cursor cursor = db.query(TABLE_TASK, columns, condition, args,
+        Cursor cursor = db.query(TABLE_SONG, columns, condition, args,
                 null, null, null, null);
 
         if (cursor.moveToFirst()) {
@@ -134,15 +133,67 @@ public class DBHelper extends SQLiteOpenHelper {
                 int year = cursor.getInt(3);
                 int stars = cursor.getInt(4);
                 Song song = new Song(id,title,singers,year,stars);
-                tasks.add(song);
+                songs.add(song);
 
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
-        return tasks;
+        return songs;
     }
 
+    public ArrayList<Song> retrieveSongsbyYear(int date) {
+        ArrayList<Song> slist = new ArrayList<Song>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns= {COLUMN_ID, COLUMN_TITLE, COLUMN_SINGERS, COLUMN_YEAR, COLUMN_STARS};
+        String condition = COLUMN_YEAR + "= ?";
+        String[] args = {String.valueOf(date)};
+        Cursor cursor = db.query(TABLE_SONG, columns, condition, args, null, null, null,null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(0);
+                String title = cursor.getString(1);
+                String singers = cursor.getString(2);
+                int year = cursor.getInt(3);
+                int stars = cursor.getInt(4);
+                Song song = new Song(id,title,singers,year,stars);
+                slist.add(song);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return slist;
+    }
+
+
+    public ArrayList<Integer> getAllYears() {
+        ArrayList<Integer> years = new ArrayList<>();
+        String selectQuery = "SELECT * FROM " + TABLE_SONG;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                int year = cursor.getInt(3);
+
+                boolean isDuplicate = false;
+                for (int i = 0; i < years.size(); i++) {
+                    if (years.get(i) == year) {
+                        isDuplicate = true;
+                        break;
+                    }
+                }
+
+                if (!isDuplicate) {
+                    years.add(year);
+                }
+
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return years;
+    }
 
 
 

@@ -5,13 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".RecordActitvity1">
+    tools:context=".RecordActitvity1"
+    android:layout_margin="10dp">
 
     <Button
         android:id="@+id/btnPopular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Show All Songs with 5 Stars " />
+        android:text="@string/show5stars" />
+
+    <Spinner
+        android:id="@+id/spinnerYear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <ListView
         android:id="@+id/lvSonglist"

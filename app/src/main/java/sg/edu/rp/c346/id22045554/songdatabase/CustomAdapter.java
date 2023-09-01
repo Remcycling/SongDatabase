@@ -48,7 +48,19 @@ public class CustomAdapter extends ArrayAdapter {
         // Set values to the TextView to display the corresponding information
         tvTitle.setText(currentVersion.getTitle());
         tvYear.setText(""+currentVersion.getYear());
-        tvStars.setText(""+currentVersion.getStars()+" stars");
+
+        if (currentVersion.getStars() == 1){
+            tvStars.setText("*");
+        } else if (currentVersion.getStars() == 2){
+            tvStars.setText("* *");
+        } else if (currentVersion.getStars() == 3){
+            tvStars.setText("* * *");
+        } else if (currentVersion.getStars() == 4){
+            tvStars.setText("* * * *");
+        } else if (currentVersion.getStars() == 5){
+            tvStars.setText("* * * * *");
+        }
+
         tvSingers.setText(currentVersion.getSingers());
 
         return rowView;

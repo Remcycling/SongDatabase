@@ -84,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Create the DBHelper object, passing in the
                 // activity's Context
-
                 Intent intent = new Intent(MainActivity.this, RecordActitvity1.class);
                 startActivity(intent);
 

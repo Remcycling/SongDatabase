@@ -4,17 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 public class RecordActivity2 extends AppCompatActivity {
 
     Button btnUpdate, btnDelete, btnCancel;
-    EditText etTitle, etSingers, etYear, etId;
+    EditText etTitle, etSingers, etYear;
+    TextView tvId;
     RadioGroup star;
     RadioButton rb1, rb2, rb3, rb4, rb5;
     Song data;
@@ -27,7 +28,7 @@ public class RecordActivity2 extends AppCompatActivity {
         btnUpdate = findViewById(R.id.btnUpdate);
         btnDelete = findViewById(R.id.btnDelete);
         btnCancel = findViewById(R.id.btnCancel);
-        etId = findViewById(R.id.editTextId);
+        tvId = findViewById(R.id.textViewId);
         etTitle = findViewById(R.id.editTextTitle2);
         etSingers = findViewById(R.id.editTextSingers2);
         etYear = findViewById(R.id.editTextYear2);
@@ -42,8 +43,7 @@ public class RecordActivity2 extends AppCompatActivity {
         Intent i = getIntent();
         data = (Song) i.getSerializableExtra("data");
 
-
-        etId.setHint(""+data.getId());
+        tvId.setText(""+data.getId());
         etTitle.setText(data.getTitle());
         etSingers.setText(data.getSingers());
         etYear.setText(""+data.getYear());
@@ -91,7 +91,7 @@ public class RecordActivity2 extends AppCompatActivity {
                 dbh.close();
 
                 Intent i = new Intent(RecordActivity2.this,
-                        MainActivity.class);
+                        RecordActitvity1.class);
                 startActivity(i);
                 finish();
 
@@ -107,8 +107,7 @@ public class RecordActivity2 extends AppCompatActivity {
 
 
                 Intent i = new Intent(RecordActivity2.this,
-                        MainActivity.class);
-                //i.putExtra("return",EditActivity.class);
+                        RecordActitvity1.class);
                 startActivity(i);
                 finish();
 
@@ -122,7 +121,6 @@ public class RecordActivity2 extends AppCompatActivity {
 
                 Intent i = new Intent(RecordActivity2.this,
                         RecordActitvity1.class);
-                //i.putExtra("return",EditActivity.class);
                 startActivity(i);
                 finish();
 

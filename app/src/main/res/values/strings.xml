@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Song Database</string>
+    <string name="show5stars">Show All Songs with 5 Stars</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="update">Update</string>
 </resources>
